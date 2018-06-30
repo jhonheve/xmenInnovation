@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Application;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
@@ -14,8 +15,13 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $apps = Application::get();//var_dump($groups);     
-        return view('dashboard',compact('apps'));
+
+        if (auth()->check()) {
+            $apps = Application::get();        
+            return view('dashboard',compact('apps'));
+        }else{
+            return redirect('/');
+        }        
     }
 
     /**
@@ -49,9 +55,11 @@ class DashboardController extends Controller
      */
     public function show($id)
     {
-        destroy($id);
-        $data = $id . "411111111111asdfas";
-        var_dump($data);
+        if (auth()->check()) {
+            $this->destroy($id);
+        }else{
+            return redirect('/');
+        }
     }
 
     /**
@@ -87,19 +95,25 @@ class DashboardController extends Controller
      */
     public function destroy($id)
     {
+        //var_dump($id);
         $updateDetails = Application::where('id', $id)->first();
-        //var_dump($updateDetails);
-        User::create([            
-            'email' => $updateDetails->email,
-            'password' => Hash::make($updateDetails->email)
-        ]);
-        User::save();
-
-        $user = new User;                      
-        $user->email = $updateDetails->email;
-        $user->password = Hash::make($updateDetails->email);
-        $user->save();
-        //var_dump($user);
-        return index();
+        if (!is_null($updateDetails)) {
+           $newUser = User::where('email', $updateDetails->email)->first();                
+            if (is_null($newUser)) {
+                User::create([            
+                    'email' => $updateDetails->email,
+                    'password' => Hash::make($updateDetails->email),
+                    'group_id' => "1"
+                ]);                
+            }
+            $updateDetails->delete();
+        }       
+        return $this->index();
     }
+
+    public function logout(){
+        auth()->logout();
+        session()->flash('message', 'Some goodbye message');        
+        return redirect('/');
+  }
 }

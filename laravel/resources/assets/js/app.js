@@ -6,9 +6,10 @@
  */
 
 require('bootstrap');
-
+import $ from 'jquery';
+window.$ = window.jQuery = $;
 window.Vue = require('vue');
-
+import 'jquery-ui/ui/widgets/datepicker.js';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

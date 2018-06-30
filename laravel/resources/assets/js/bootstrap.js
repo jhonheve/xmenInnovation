@@ -11,7 +11,7 @@ window.Popper = require('popper.js/dist/umd/popper');
 
 try {
 	window.$ = window.jQuery = require('jquery');	
-	require('popper.js');
+	window.Popper = Popper;
     require('bootstrap');
 } catch (e) {}
 

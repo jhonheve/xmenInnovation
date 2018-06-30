@@ -61,9 +61,7 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
-        return var_dump($data);
-        
+    {        
         return Application::create([
             'reason' => $data['reason'],
             'email' => $data['email'],

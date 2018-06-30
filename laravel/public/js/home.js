@@ -1,6 +1,7 @@
 //$(function(){
 $(document).ready(function(){
 	$(".grouptype").on("click", function(){
+		debugger;
 		var id=$(this).data("id");
 		if (id == 1) {
 			window.location.href = "/login";
@@ -52,11 +53,10 @@ $(document).ready(function(){
 		var id=$(this).closest("tr").data("id");
 		if (id >= 1) {
 			$.ajax({
-		      type: "DELETE",
+		      type: "get",
 		      url: '/dashboard/' + id,
 		      success: function(result) {
 		        debugger;
-
 		      }
 		    });
 		}

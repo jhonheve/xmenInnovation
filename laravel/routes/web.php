@@ -18,12 +18,12 @@ Route::get('/', 'WelcomeController@index');
 // });
 
 Auth::routes();
+//Route::post('/logout', 'DashboardController@logout')->name("logoutuser");
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'RegisterController@index')->name('home');
 Route::post('/application', 'ApplicationController@store')->name("sendRequest");
-
-Route::resource('dashboard', 'DashboardController');
-
-Route::get('/dashboard/{id}', function ($id) {
+Route::resource('/dashboard', 'DashboardController');
+Route::get('/logoutuser', 'DashboardController@logout')->name("logoutuser");
+Route::delete('/dashboard/{id}', function ($id) {
     return $id;
 });
