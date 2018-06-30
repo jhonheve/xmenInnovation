@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\application;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Redirect;
+use Storage;
+use File;
 
 class ApplicationController extends Controller
 {
@@ -36,24 +39,35 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        //var_dump($request->input('reason'));        
+        $file = $request->file('pathBefore');
+        $file_after = $request->file('pathAfter');
+        //$fileName = $file->getClientOriginalName();
+        /*
+        var_dump($request->hasFile('pathBefore'));
+        var_dump(is_null($file));
+        var_dump($file);
+        */
+        //$fileContent = Storage::get($file);
+        //var_dump(File::get($file));
+
+        
+
          
-         $totalApp = Application::where('email',$request->email)->count();
-         var_dump($totalApp);
-         if ($totalApp == 0) {
+         $totalApp = Application::where('email',$request->email)->count(); 
+         var_dump($request->hasFile('pathBefore'));
+         var_dump($request->hasFile('pathAfter'));        
+         if ($totalApp == 0 && $request->hasFile('pathBefore') && $request->hasFile('pathAfter')) {
              $app = new Application;         
              $app->reason = $request->reason;
              $app->email = $request->email;
+             $app->pathBefore =  $file;
+             $app->pathAfter =  $file_after;
              $app->group_id = 2;
              $app->save();
          }else{
             Application::where('email', '==', $request->email)->update(array('reason' => $request->reason));
          }
-         return Redirect::action('WelcomeController@index');
-        /*         
-        'pathBefore' =>$request->input('pathBefore'),
-        'pathAfter' => $request->input('pathAfter'),
-        */
+        return redirect('/');        
     }
 
     /**

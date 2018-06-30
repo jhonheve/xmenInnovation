@@ -15,6 +15,7 @@ class WelcomeController extends Controller
     
     public function index()
     {
+    	auth()->logout();
 		$groups = Group::get();//var_dump($groups);		
         return view('home',compact('groups'));
     }

@@ -48,17 +48,24 @@ $(document).ready(function(){
 	});
 
 
-	$(".approveRequest").on("click", function(){
-		debugger;
+	$(".approveRequest").on("click", function(){		
 		var id=$(this).closest("tr").data("id");
 		if (id >= 1) {
 			$.ajax({
 		      type: "get",
 		      url: '/dashboard/' + id,
 		      success: function(result) {
-		        debugger;
+		        location.reload();
 		      }
 		    });
 		}
+	});
+
+	$("#pathAfter, #pathBefore").on("change", function(){
+		var msg = "Choose file";
+		if ($(this)[0].value != "" ) {
+			msg=$(this)[0].value;
+		}
+		$(this).closest("div").find("label").text(msg);
 	});
 });

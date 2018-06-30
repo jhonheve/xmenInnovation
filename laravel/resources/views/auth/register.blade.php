@@ -5,10 +5,13 @@
     <div class="row">
         <div class="col-xs-12 col-md-12" style="border: 1px solid">
             <div class="panel panel-default">
-                <div class="panel-heading mb-3 mt-3">Register</div>
+                <div class="panel-heading mb-3 mt-3">
+                    <span>Load the photos, before and after to be a mutant</span>
+                </div>
 
                 <div class="panel-body ">
-                    <form class="form-horizontal" method="POST" action="{{ route('sendRequest') }}" enctype="multipart/form-data" id="applicationForm">
+                    <form class="form-horizontal" method="POST" action="{{ route('sendRequest') }}" enctype="multipart/form-data" id="applicationForm" accept-charset="UTF-8">
+
                         {{ csrf_field() }}
                        <div class="d-none" id="applicationDetails">
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -70,8 +73,8 @@
                                 <span class="input-group-text">Before</span>
                               </div>
                               <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="pathBefore" accept="image/*" />
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    <input type="file" class="custom-file-input" id="pathBefore" name="pathBefore" accept="image/*" />
+                                    <label class="custom-file-label" for="pathBefore">Choose file</label>
                               </div>
                             </div>
                         
@@ -80,8 +83,15 @@
                                     <span class="input-group-text">After</span>
                                 </div>
                                 <div class="input-group-prepend custom-file">
-                                    <input type="file" class="custom-file-input" id="pathAfter" accept="image/*"/>
+                                    <input type="file" class="custom-file-input" id="pathAfter" accept="image/*" name="pathAfter"/>
                                     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                            </div>
+                            <div class="form-group float-left">
+                                <div class="col-md pr-0 pl-0 ">
+                                    <a href="/" class="btn btn-primary btn-xs">
+                                    Go home
+                                </a>
                                 </div>
                             </div>
                             <div class="form-group float-right">

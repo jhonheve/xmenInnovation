@@ -40,13 +40,23 @@
                             </div>
                         </div>                    
 
-                        <div class="form-group">
+                        <div class="form-group float-right">
                             <div class="col-md col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>
                             </div>
                         </div>
+
+                        <div class="form-group float-left">
+                                <div class="col-md pr-0">
+                                    <a href="/" class="btn btn-primary btn-xs">
+                                    Go home
+                                </a>
+                                </div>
+                        </div>
+
+
                     </form>
                 </div>
             </div>
