@@ -13,14 +13,22 @@
                         <table class="table table-striped">
                             <thead>
                                   <tr>                                    
-                                    <th>Email</th>
-                                    <th>Reason</th>                                    
+                                    <th class="text-center">Before</th>
+                                    <th class="text-center">After</th>
+                                    <th  class="text-center">Reason</th>
                                   </tr>
                             </thead>
                             <tbody>
                                 @foreach($apps as $key=>$value)                       
                                       <tr data-id="{{$value->id}}">
-                                            <td>{{$value->email}}</td>
+                                            <td class="text-center">                
+                                                <img src="data:image/jpeg;base64,{{ base64_encode($value->pathBefore) }}" class="img-fluid img-thumbnail rounded" width="100" height="100" 
+                                               />                
+                                            </td>
+                                            <td class="text-center">                                         
+                                                <img src="data:image/jpeg;base64,{{ base64_encode($value->pathAfter) }}" class="img-fluid img-thumbnail rounded" width="100" height="100" 
+                                               />                
+                                            </td>
                                             <td>{{$value->reason}}</td>
                                             <td>
                                                 <button type="button" class="approveRequest btn btn-primary btn-xs">Approve</button>

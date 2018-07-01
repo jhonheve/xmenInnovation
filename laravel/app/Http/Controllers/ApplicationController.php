@@ -47,21 +47,18 @@ class ApplicationController extends Controller
         var_dump(is_null($file));
         var_dump($file);
         */
-        //$fileContent = Storage::get($file);
-        //var_dump(File::get($file));
-
+        //$fileContentBefore = file_get_contents($file);
+        //$blobBefore = base64_encode($fileContentBefore);
+        $blobBefore = $file->openFile()->fread($file->getSize());
+        $blobAfter = $file_after->openFile()->fread($file_after->getSize());
         
-
-         
-         $totalApp = Application::where('email',$request->email)->count(); 
-         var_dump($request->hasFile('pathBefore'));
-         var_dump($request->hasFile('pathAfter'));        
+         $totalApp = Application::where('email',$request->email)->count();              
          if ($totalApp == 0 && $request->hasFile('pathBefore') && $request->hasFile('pathAfter')) {
              $app = new Application;         
              $app->reason = $request->reason;
              $app->email = $request->email;
-             $app->pathBefore =  $file;
-             $app->pathAfter =  $file_after;
+             $app->pathBefore =  $blobBefore;
+             $app->pathAfter =  $blobAfter;
              $app->group_id = 2;
              $app->save();
          }else{

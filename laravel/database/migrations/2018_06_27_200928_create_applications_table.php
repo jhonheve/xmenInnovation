@@ -23,6 +23,10 @@ class CreateApplicationsTable extends Migration
             $table->timestamps();            
             $table->foreign('group_id')->references('id')->on('groups');
         });
+
+        DB::statement("alter table applications CHANGE pathAfter pathAfter LONGBLOB NULL DEFAULT NULL");
+        DB::statement("alter table applications CHANGE pathBefore pathBefore LONGBLOB NULL DEFAULT NULL");
+        
     }
 
     /**

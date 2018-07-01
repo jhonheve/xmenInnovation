@@ -19,7 +19,7 @@ class AddGroupIdToUsers extends Migration
         });
 
         
-         DB::table('users')->insert(
+        DB::table('users')->insert(
             [
                 array(
                     'email' => 'admin@admin.com',
