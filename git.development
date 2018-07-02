@@ -1,0 +1,14 @@
+- Download Git
+	https://git-scm.com/downloads
+	
+- verify that Git is installed 
+	git --version
+	
+- Go where the web-server is configured by console
+	e.g working with XAMPP go to the ..\XAMPP\htdocs	
+	
+- Clone the project running the following command line where the web-server path is configured
+	git clone https://github.com/jhonheve/xmenInnovation.git
+	
+	
+	
