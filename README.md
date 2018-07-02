@@ -18,3 +18,14 @@ To run this project is needed to run the following commands
 	+ run "php artisan migrate" by cmd, this command will create the database.
 	+ run "php artisan serve"
 	
+After installing the app
+	- The app allows to send requests to the Mutants in order to become in XMEN
+	- The Xmen can validate if a mutant request is valid or not.
+		* default user is admin@admin.com with password 12345
+	- when a xmen approve any mutant request, the mutant can go into the Xmen dashboard with his email and his password would be the same email.
+		Username = email registered 
+		Password = email registered.
+	
+	
+	
+	
