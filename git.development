@@ -10,5 +10,14 @@
 - Clone the project running the following command line where the web-server path is configured
 	git clone https://github.com/jhonheve/xmenInnovation.git
 	
+- Go into the project/laravel folder and run the following command 
+	php artisan serve  just to see if the app is running
+	
+- After this proccess is needed to follow the README steps
+
+	
+	
+	
+	
 	
 	
