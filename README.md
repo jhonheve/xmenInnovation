@@ -15,7 +15,8 @@ Run the app
 
 To run this project is needed to run the following commands
 - go into laravel folder
-	+ run "php artisan migrate" by cmd, this command will create the database.
+	+ Create an empty database
+	+ run "php artisan migrate" by cmd, this command will create the scheme of the database.
 	+ run "php artisan serve"
 	
 After installing the app
